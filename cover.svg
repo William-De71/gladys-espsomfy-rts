@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Illustration only: no brand logo (Somfy and RTS are trademarks of Somfy, not affiliated). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#13202e"/>
+      <stop offset="1" stop-color="#1f3346"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f6c453" stop-opacity="0.35"/>
+      <stop offset="0.6" stop-color="#f6c453" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#f6c453" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7cc4ff"/>
+      <stop offset="1" stop-color="#2f6fb5"/>
+    </linearGradient>
+    <linearGradient id="slat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9edf2"/>
+      <stop offset="1" stop-color="#b8c2ce"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d6b52"/>
+      <stop offset="1" stop-color="#0f4535"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  <circle cx="660" cy="90" r="160" fill="url(#halo)"/>
+  <circle cx="660" cy="90" r="34" fill="#f6c453" opacity="0.9"/>
+
+  <!-- A window with a roller shutter half down -->
+  <rect x="70" y="70" width="230" height="270" rx="8" fill="#0c151f" stroke="#3a4a5c" stroke-width="6"/>
+  <rect x="84" y="84" width="202" height="242" fill="url(#glass)" opacity="0.85"/>
+  <line x1="185" y1="84" x2="185" y2="326" stroke="#0c151f" stroke-width="6"/>
+  <rect x="62" y="56" width="246" height="26" rx="6" fill="#56677a"/>
+  <g fill="url(#slat)">
+    <rect x="84" y="82" width="202" height="16"/>
+    <rect x="84" y="100" width="202" height="16"/>
+    <rect x="84" y="118" width="202" height="16"/>
+    <rect x="84" y="136" width="202" height="16"/>
+    <rect x="84" y="154" width="202" height="16"/>
+    <rect x="84" y="172" width="202" height="16"/>
+  </g>
+  <rect x="84" y="188" width="202" height="6" fill="#8a96a3"/>
+
+  <!-- An awning out -->
+  <rect x="350" y="150" width="260" height="14" rx="5" fill="#56677a"/>
+  <path d="M 356 164 L 604 164 L 640 250 L 320 250 Z" fill="#e8eef4"/>
+  <g fill="#d9534f">
+    <path d="M 386 164 L 418 164 L 438 250 L 396 250 Z"/>
+    <path d="M 450 164 L 482 164 L 494 250 L 452 250 Z"/>
+    <path d="M 514 164 L 546 164 L 552 250 L 510 250 Z"/>
+    <path d="M 578 164 L 604 164 L 610 250 L 568 250 Z"/>
+  </g>
+  <path d="M 320 250 L 640 250 L 640 262 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 q -20 14 -40 0 Z" fill="#c9443f"/>
+
+  <!-- The ESP32 controller and its radio waves -->
+  <g transform="translate(560 300)">
+    <rect x="0" y="0" width="140" height="84" rx="8" fill="url(#board)"/>
+    <rect x="16" y="16" width="56" height="44" rx="4" fill="#c7ccd2"/>
+    <rect x="86" y="18" width="38" height="38" rx="3" fill="#20262d"/>
+    <g fill="#d9a441">
+      <rect x="8" y="76" width="6" height="12"/><rect x="22" y="76" width="6" height="12"/>
+      <rect x="36" y="76" width="6" height="12"/><rect x="50" y="76" width="6" height="12"/>
+      <rect x="64" y="76" width="6" height="12"/><rect x="78" y="76" width="6" height="12"/>
+      <rect x="92" y="76" width="6" height="12"/><rect x="106" y="76" width="6" height="12"/>
+    </g>
+    <rect x="118" y="-40" width="6" height="44" rx="3" fill="#c7ccd2"/>
+    <g fill="none" stroke="#7cc4ff" stroke-linecap="round">
+      <path d="M 104 -48 q 17 -18 34 0" stroke-width="5"/>
+      <path d="M 92 -62 q 29 -30 58 0" stroke-width="4" opacity="0.7"/>
+      <path d="M 80 -76 q 41 -42 82 0" stroke-width="3" opacity="0.45"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="452" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="700" fill="#ffffff" text-anchor="middle">ESPSomfy RTS for Gladys</text>
+  <text x="400" y="494" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="21" fill="#b9c4d2" text-anchor="middle">Somfy RTS shades, awnings and gates on your local network · unofficial</text>
+</svg>

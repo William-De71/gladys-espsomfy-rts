@@ -1,0 +1,821 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "ESPSomfy RTS",
+  "description": {
+    "en": "Somfy RTS shades, awnings and gates through an ESPSomfy RTS controller, on the local network.",
+    "fr": "Volets, stores et portails Somfy RTS via un contrôleur ESPSomfy RTS, sur le réseau local.",
+    "de": "Somfy-RTS-Rollläden, Markisen und Tore über einen ESPSomfy-RTS-Controller, lokal.",
+    "es": "Persianas, toldos y portones Somfy RTS con un controlador ESPSomfy RTS, en la red local."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-espsomfy-rts:0.1.0",
+  "gladys_version": ">=5.1.0",
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-espsomfy-rts/main/cover.jpg",
+  "categories": ["lighting", "protocols"],
+  "transports": ["local"],
+  "network_discovery": [
+    {
+      "type": "ssdp",
+      "st": "ssdp:all"
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Search the controllers",
+        "fr": "Rechercher les contrôleurs",
+        "de": "Controller suchen",
+        "es": "Buscar los controladores"
+      },
+      "description": {
+        "en": "Searches the local network and the addresses below, then lists every ESPSomfy RTS controller found with its firmware, its shades and its groups.",
+        "fr": "Cherche sur le réseau local et aux adresses ci-dessous, puis liste chaque contrôleur ESPSomfy RTS trouvé avec son micrologiciel, ses volets et ses groupes.",
+        "de": "Durchsucht das lokale Netzwerk und die Adressen unten und listet jeden gefundenen ESPSomfy-RTS-Controller mit Firmware, Antrieben und Gruppen auf.",
+        "es": "Busca en la red local y en las direcciones de abajo, y lista cada controlador ESPSomfy RTS encontrado con su firmware, sus persianas y sus grupos."
+      }
+    }
+  ],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Your ESPSomfy RTS controller",
+        "fr": "Votre contrôleur ESPSomfy RTS",
+        "de": "Ihr ESPSomfy-RTS-Controller",
+        "es": "Su controlador ESPSomfy RTS"
+      },
+      "description": {
+        "en": "ESPSomfy RTS is an open-source firmware for an ESP32 with a 433 MHz radio: it drives Somfy RTS motors (roller shutters, blinds, awnings, curtains, garage doors, gates) like their remotes do, and hears those remotes. Set up your shades and groups in its web page first. Gladys then finds the controller on the local network by itself, and every shade and group appears in the Discover tab. Nothing leaves your network. Not affiliated with Somfy.",
+        "fr": "ESPSomfy RTS est un micrologiciel libre pour un ESP32 équipé d’une radio 433 MHz : il pilote les moteurs Somfy RTS (volets roulants, stores, bannes, rideaux, portes de garage, portails) comme leurs télécommandes, et entend ces télécommandes. Créez d’abord vos volets et groupes dans sa page web. Gladys trouve ensuite le contrôleur toute seule sur le réseau local, et chaque volet et groupe apparaît dans l’onglet Découverte. Rien ne sort de votre réseau. Sans lien avec Somfy.",
+        "de": "ESPSomfy RTS ist eine freie Firmware für einen ESP32 mit 433-MHz-Funkmodul: Sie steuert Somfy-RTS-Antriebe (Rollläden, Jalousien, Markisen, Vorhänge, Garagentore, Tore) wie deren Fernbedienungen und hört diese Fernbedienungen mit. Legen Sie zuerst Ihre Antriebe und Gruppen auf seiner Webseite an. Gladys findet den Controller dann selbst im lokalen Netzwerk, und jeder Antrieb und jede Gruppe erscheint im Tab Erkennung. Nichts verlässt Ihr Netzwerk. Nicht mit Somfy verbunden.",
+        "es": "ESPSomfy RTS es un firmware libre para un ESP32 con una radio de 433 MHz: controla los motores Somfy RTS (persianas, estores, toldos, cortinas, puertas de garaje, portones) como sus mandos, y escucha esos mandos. Cree primero sus persianas y grupos en su página web. Gladys encuentra después el controlador sola en la red local, y cada persiana y grupo aparece en la pestaña Descubrir. Nada sale de su red. Sin relación con Somfy."
+      },
+      "links": [
+        {
+          "url": "https://github.com/William-De71/gladys-espsomfy-rts/blob/main/docs/en.md",
+          "label": {
+            "en": "Setup guide",
+            "fr": "Guide d’installation",
+            "de": "Installationsanleitung",
+            "es": "Guía de instalación"
+          }
+        },
+        {
+          "url": "https://github.com/rstrouse/ESPSomfy-RTS",
+          "label": {
+            "en": "ESPSomfy RTS firmware",
+            "fr": "Micrologiciel ESPSomfy RTS",
+            "de": "ESPSomfy-RTS-Firmware",
+            "es": "Firmware ESPSomfy RTS"
+          }
+        }
+      ]
+    },
+    {
+      "key": "hosts",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "label": {
+        "en": "Controller IP addresses",
+        "fr": "Adresses IP des contrôleurs",
+        "de": "IP-Adressen der Controller",
+        "es": "Direcciones IP de los controladores"
+      },
+      "description": {
+        "en": "Optional, separated by commas. Only for a controller the automatic search does not find (another subnet, a network that filters multicast, SSDP turned off).",
+        "fr": "Facultatif, séparées par des virgules. Seulement pour un contrôleur que la recherche automatique ne trouve pas (autre sous-réseau, réseau qui filtre le multicast, SSDP désactivé).",
+        "de": "Optional, durch Kommas getrennt. Nur für einen Controller, den die automatische Suche nicht findet (anderes Subnetz, Netzwerk, das Multicast filtert, SSDP aus).",
+        "es": "Opcional, separadas por comas. Solo para un controlador que la búsqueda automática no encuentra (otra subred, una red que filtra el multicast, SSDP desactivado)."
+      },
+      "placeholder": {
+        "en": "e.g. 192.168.1.40",
+        "fr": "ex. 192.168.1.40",
+        "de": "z. B. 192.168.1.40",
+        "es": "p. ej. 192.168.1.40"
+      }
+    },
+    {
+      "key": "rescan_interval",
+      "type": "select",
+      "required": false,
+      "default": "60",
+      "label": {
+        "en": "Search the network again",
+        "fr": "Rechercher à nouveau sur le réseau",
+        "de": "Netzwerk erneut durchsuchen",
+        "es": "Volver a buscar en la red"
+      },
+      "description": {
+        "en": "To find a new controller, a shade added in its web page, an address changed by the router. A lost controller is called again anyway.",
+        "fr": "Pour trouver un nouveau contrôleur, un volet ajouté dans sa page web, une adresse changée par la box. Un contrôleur perdu est rappelé dans tous les cas.",
+        "de": "Um einen neuen Controller, einen auf seiner Webseite hinzugefügten Antrieb oder eine vom Router geänderte Adresse zu finden. Ein verlorener Controller wird ohnehin erneut kontaktiert.",
+        "es": "Para encontrar un controlador nuevo, una persiana añadida en su página web o una dirección cambiada por el router. Un controlador perdido se vuelve a contactar de todos modos."
+      },
+      "options": [
+        {
+          "value": "0",
+          "label": {
+            "en": "Never",
+            "fr": "Jamais",
+            "de": "Nie",
+            "es": "Nunca"
+          }
+        },
+        {
+          "value": "15",
+          "label": {
+            "en": "Every 15 minutes",
+            "fr": "Toutes les 15 minutes",
+            "de": "Alle 15 Minuten",
+            "es": "Cada 15 minutos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "Every hour",
+            "fr": "Toutes les heures",
+            "de": "Stündlich",
+            "es": "Cada hora"
+          }
+        }
+      ]
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "required": false,
+      "default": "en",
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Names of the features and error messages of the scenes: Gladys does not tell the integration your language for those.",
+        "fr": "Noms des fonctionnalités et messages d’erreur des scènes : Gladys ne transmet pas votre langue à l’intégration pour ceux-là.",
+        "de": "Namen der Funktionen und Fehlermeldungen der Szenen: Gladys teilt der Integration Ihre Sprache dafür nicht mit.",
+        "es": "Nombres de las funciones y mensajes de error de las escenas: Gladys no comunica su idioma a la integración para ellos."
+      },
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "key": "shade",
+      "icon": "sliders",
+      "action_timeout_seconds": 15,
+      "label": {
+        "en": "Somfy shade",
+        "fr": "Volet Somfy",
+        "de": "Somfy-Antrieb",
+        "es": "Persiana Somfy"
+      },
+      "description": {
+        "en": "One shade or group: how open, its state, “My”, sun and wind; open, My, close.",
+        "fr": "Un volet ou un groupe : ouverture, état, « My », soleil et vent ; ouvrir, My, fermer.",
+        "de": "Ein Antrieb oder eine Gruppe: Öffnung, Zustand, „My“, Sonne, Wind; Auf, My, Zu.",
+        "es": "Una persiana o un grupo: apertura, estado, «My», sol y viento; abrir, My, cerrar."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "Shade or group",
+            "fr": "Volet ou groupe",
+            "de": "Antrieb oder Gruppe",
+            "es": "Persiana o grupo"
+          }
+        }
+      ]
+    },
+    {
+      "key": "overview",
+      "icon": "list",
+      "label": {
+        "en": "Somfy shades",
+        "fr": "Volets Somfy",
+        "de": "Somfy-Antriebe",
+        "es": "Persianas Somfy"
+      },
+      "description": {
+        "en": "Every shade added to Gladys at a glance, and the state of the controllers.",
+        "fr": "Tous les volets ajoutés à Gladys d’un coup d’œil, et l’état des contrôleurs.",
+        "de": "Alle zu Gladys hinzugefügten Antriebe auf einen Blick und der Zustand der Controller.",
+        "es": "Todas las persianas añadidas a Gladys de un vistazo, y el estado de los controladores."
+      }
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "remote_pressed",
+      "label": {
+        "en": "A Somfy remote is pressed",
+        "fr": "Une télécommande Somfy est pressée",
+        "de": "Eine Somfy-Fernbedienung wird gedrückt",
+        "es": "Se pulsa un mando Somfy"
+      },
+      "description": {
+        "en": "A remote, wall switch or Situo paired with a shade: the controller hears its radio frame. Gladys’ own commands do not count.",
+        "fr": "Une télécommande, un interrupteur mural ou une Situo appairés à un volet : le contrôleur entend sa trame radio. Les commandes de Gladys ne comptent pas.",
+        "de": "Eine Fernbedienung, ein Wandsender oder eine Situo, die mit einem Antrieb gekoppelt ist: Der Controller hört ihr Funksignal. Befehle von Gladys zählen nicht.",
+        "es": "Un mando, un pulsador de pared o un Situo emparejado con una persiana: el controlador oye su trama de radio. Las órdenes de Gladys no cuentan."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Shade",
+            "fr": "Volet",
+            "de": "Antrieb",
+            "es": "Persiana"
+          },
+          "description": {
+            "en": "Empty: any shade.",
+            "fr": "Vide : n’importe quel volet.",
+            "de": "Leer: jeder Antrieb.",
+            "es": "Vacío: cualquier persiana."
+          }
+        },
+        {
+          "key": "button",
+          "type": "select",
+          "label": {
+            "en": "Button",
+            "fr": "Bouton",
+            "de": "Taste",
+            "es": "Botón"
+          },
+          "description": {
+            "en": "Empty: any button.",
+            "fr": "Vide : n’importe quel bouton.",
+            "de": "Leer: jede Taste.",
+            "es": "Vacío: cualquier botón."
+          },
+          "options": [
+            {
+              "value": "up",
+              "label": {
+                "en": "▲ Up",
+                "fr": "▲ Haut",
+                "de": "▲ Auf",
+                "es": "▲ Subir"
+              }
+            },
+            {
+              "value": "down",
+              "label": {
+                "en": "▼ Down",
+                "fr": "▼ Bas",
+                "de": "▼ Ab",
+                "es": "▼ Bajar"
+              }
+            },
+            {
+              "value": "my",
+              "label": {
+                "en": "My",
+                "fr": "My",
+                "de": "My",
+                "es": "My"
+              }
+            },
+            {
+              "value": "my_up",
+              "label": {
+                "en": "My + Up",
+                "fr": "My + Haut",
+                "de": "My + Auf",
+                "es": "My + Subir"
+              }
+            },
+            {
+              "value": "my_down",
+              "label": {
+                "en": "My + Down",
+                "fr": "My + Bas",
+                "de": "My + Ab",
+                "es": "My + Bajar"
+              }
+            },
+            {
+              "value": "up_down",
+              "label": {
+                "en": "Up + Down",
+                "fr": "Haut + Bas",
+                "de": "Auf + Ab",
+                "es": "Subir + Bajar"
+              }
+            },
+            {
+              "value": "my_up_down",
+              "label": {
+                "en": "My + Up + Down",
+                "fr": "My + Haut + Bas",
+                "de": "My + Auf + Ab",
+                "es": "My + Subir + Bajar"
+              }
+            },
+            {
+              "value": "prog",
+              "label": {
+                "en": "Prog",
+                "fr": "Prog",
+                "de": "Prog",
+                "es": "Prog"
+              }
+            },
+            {
+              "value": "step_up",
+              "label": {
+                "en": "Step up",
+                "fr": "Pas vers le haut",
+                "de": "Schritt auf",
+                "es": "Paso arriba"
+              }
+            },
+            {
+              "value": "step_down",
+              "label": {
+                "en": "Step down",
+                "fr": "Pas vers le bas",
+                "de": "Schritt ab",
+                "es": "Paso abajo"
+              }
+            },
+            {
+              "value": "toggle",
+              "label": {
+                "en": "Toggle (one-button remote)",
+                "fr": "Bascule (télécommande à un bouton)",
+                "de": "Umschalten (Ein-Tasten-Fernbedienung)",
+                "es": "Alternar (mando de un botón)"
+              }
+            },
+            {
+              "value": "favorite",
+              "label": {
+                "en": "Favourite",
+                "fr": "Favori",
+                "de": "Favorit",
+                "es": "Favorito"
+              }
+            },
+            {
+              "value": "stop",
+              "label": {
+                "en": "Stop",
+                "fr": "Stop",
+                "de": "Stopp",
+                "es": "Parar"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Shade name",
+            "fr": "Nom du volet",
+            "de": "Name des Antriebs",
+            "es": "Nombre de la persiana"
+          }
+        },
+        {
+          "key": "button",
+          "type": "string",
+          "label": {
+            "en": "Button (up, down, my…)",
+            "fr": "Bouton (up, down, my…)",
+            "de": "Taste (up, down, my…)",
+            "es": "Botón (up, down, my…)"
+          }
+        },
+        {
+          "key": "remote_address",
+          "type": "number",
+          "label": {
+            "en": "Address of the remote",
+            "fr": "Adresse de la télécommande",
+            "de": "Adresse der Fernbedienung",
+            "es": "Dirección del mando"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sun_wind_changed",
+      "label": {
+        "en": "Sun or wind changes",
+        "fr": "Le soleil ou le vent change",
+        "de": "Sonne oder Wind ändert sich",
+        "es": "Cambia el sol o el viento"
+      },
+      "description": {
+        "en": "Reported by the Somfy sun and wind sensor of a motor (Soliris, Eolis…), when sun or wind comes or goes.",
+        "fr": "Signalé par le capteur soleil et vent Somfy d’un moteur (Soliris, Eolis…), quand le soleil ou le vent arrive ou s’en va.",
+        "de": "Vom Somfy-Sonnen- und Windsensor eines Antriebs gemeldet (Soliris, Eolis…), wenn Sonne oder Wind kommt oder geht.",
+        "es": "Lo indica el sensor de sol y viento Somfy de un motor (Soliris, Eolis…), cuando llega o se va el sol o el viento."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Shade",
+            "fr": "Volet",
+            "de": "Antrieb",
+            "es": "Persiana"
+          },
+          "description": {
+            "en": "Empty: any shade.",
+            "fr": "Vide : n’importe quel volet.",
+            "de": "Leer: jeder Antrieb.",
+            "es": "Vacío: cualquier persiana."
+          }
+        },
+        {
+          "key": "sensor",
+          "type": "select",
+          "label": {
+            "en": "Sensor",
+            "fr": "Capteur",
+            "de": "Sensor",
+            "es": "Sensor"
+          },
+          "description": {
+            "en": "Empty: sun or wind.",
+            "fr": "Vide : soleil ou vent.",
+            "de": "Leer: Sonne oder Wind.",
+            "es": "Vacío: sol o viento."
+          },
+          "options": [
+            {
+              "value": "sun",
+              "label": {
+                "en": "Sun",
+                "fr": "Soleil",
+                "de": "Sonne",
+                "es": "Sol"
+              }
+            },
+            {
+              "value": "wind",
+              "label": {
+                "en": "Wind",
+                "fr": "Vent",
+                "de": "Wind",
+                "es": "Viento"
+              }
+            }
+          ]
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "State",
+            "fr": "État",
+            "de": "Zustand",
+            "es": "Estado"
+          },
+          "description": {
+            "en": "Empty: both.",
+            "fr": "Vide : les deux.",
+            "de": "Leer: beides.",
+            "es": "Vacío: ambos."
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "Detected",
+                "fr": "Détecté",
+                "de": "Erkannt",
+                "es": "Detectado"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Gone",
+                "fr": "Parti",
+                "de": "Vorbei",
+                "es": "Desaparecido"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Shade name",
+            "fr": "Nom du volet",
+            "de": "Name des Antriebs",
+            "es": "Nombre de la persiana"
+          }
+        }
+      ]
+    },
+    {
+      "key": "controller_offline",
+      "label": {
+        "en": "An ESPSomfy RTS controller is lost",
+        "fr": "Un contrôleur ESPSomfy RTS est perdu",
+        "de": "Ein ESPSomfy-RTS-Controller ist weg",
+        "es": "Se pierde un controlador ESPSomfy RTS"
+      },
+      "description": {
+        "en": "It has not answered for a minute (unplugged, Wi-Fi lost): its shades cannot be controlled.",
+        "fr": "Il ne répond plus depuis une minute (débranché, Wi-Fi perdu) : ses volets ne peuvent plus être pilotés.",
+        "de": "Er antwortet seit einer Minute nicht (ausgesteckt, WLAN verloren): Seine Antriebe sind nicht steuerbar.",
+        "es": "No responde desde hace un minuto (desenchufado, Wi-Fi perdido): sus persianas no se pueden controlar."
+      },
+      "variables": [
+        {
+          "key": "controller_name",
+          "type": "string",
+          "label": {
+            "en": "Controller name",
+            "fr": "Nom du contrôleur",
+            "de": "Name des Controllers",
+            "es": "Nombre del controlador"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "IP address",
+            "fr": "Adresse IP",
+            "de": "IP-Adresse",
+            "es": "Dirección IP"
+          }
+        }
+      ]
+    },
+    {
+      "key": "controller_online",
+      "label": {
+        "en": "An ESPSomfy RTS controller is back",
+        "fr": "Un contrôleur ESPSomfy RTS est de retour",
+        "de": "Ein ESPSomfy-RTS-Controller ist zurück",
+        "es": "Vuelve un controlador ESPSomfy RTS"
+      },
+      "description": {
+        "en": "It answers again, after a “lost” event.",
+        "fr": "Il répond de nouveau, après un événement « perdu ».",
+        "de": "Er antwortet wieder, nach einem „weg“-Ereignis.",
+        "es": "Vuelve a responder, tras un evento «perdido»."
+      },
+      "variables": [
+        {
+          "key": "controller_name",
+          "type": "string",
+          "label": {
+            "en": "Controller name",
+            "fr": "Nom du contrôleur",
+            "de": "Name des Controllers",
+            "es": "Nombre del controlador"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "IP address",
+            "fr": "Adresse IP",
+            "de": "IP-Adresse",
+            "es": "Dirección IP"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "send_command",
+      "timeout_seconds": 15,
+      "label": {
+        "en": "Send a Somfy command",
+        "fr": "Envoyer une commande Somfy",
+        "de": "Somfy-Befehl senden",
+        "es": "Enviar una orden Somfy"
+      },
+      "description": {
+        "en": "To a shade or a group: “My” (the favourite position stored in the motor), a step, the sun sensor…",
+        "fr": "À un volet ou un groupe : « My » (la position favorite enregistrée dans le moteur), un pas, le capteur soleil…",
+        "de": "An einen Antrieb oder eine Gruppe: „My“ (die im Motor gespeicherte Lieblingsposition), ein Schritt, der Sonnensensor…",
+        "es": "A una persiana o un grupo: «My» (la posición favorita guardada en el motor), un paso, el sensor de sol…"
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "Shade or group",
+            "fr": "Volet ou groupe",
+            "de": "Antrieb oder Gruppe",
+            "es": "Persiana o grupo"
+          }
+        },
+        {
+          "key": "command",
+          "type": "select",
+          "required": true,
+          "default": "my",
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Orden"
+          },
+          "options": [
+            {
+              "value": "my",
+              "label": {
+                "en": "My: favourite position (stops a moving shade)",
+                "fr": "My : position favorite (arrête un volet en mouvement)",
+                "de": "My: Lieblingsposition (stoppt einen fahrenden Antrieb)",
+                "es": "My: posición favorita (detiene una persiana en marcha)"
+              }
+            },
+            {
+              "value": "open",
+              "label": {
+                "en": "Open",
+                "fr": "Ouvrir",
+                "de": "Öffnen",
+                "es": "Abrir"
+              }
+            },
+            {
+              "value": "close",
+              "label": {
+                "en": "Close",
+                "fr": "Fermer",
+                "de": "Schließen",
+                "es": "Cerrar"
+              }
+            },
+            {
+              "value": "step_open",
+              "label": {
+                "en": "One step towards open",
+                "fr": "Un pas vers l’ouverture",
+                "de": "Ein Schritt Richtung offen",
+                "es": "Un paso hacia abierto"
+              }
+            },
+            {
+              "value": "step_close",
+              "label": {
+                "en": "One step towards closed",
+                "fr": "Un pas vers la fermeture",
+                "de": "Ein Schritt Richtung zu",
+                "es": "Un paso hacia cerrado"
+              }
+            },
+            {
+              "value": "sun_flag_on",
+              "label": {
+                "en": "Sun sensor: active",
+                "fr": "Capteur soleil : actif",
+                "de": "Sonnensensor: aktiv",
+                "es": "Sensor de sol: activo"
+              }
+            },
+            {
+              "value": "sun_flag_off",
+              "label": {
+                "en": "Sun sensor: ignored",
+                "fr": "Capteur soleil : ignoré",
+                "de": "Sonnensensor: ignoriert",
+                "es": "Sensor de sol: ignorado"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "set_current_position",
+      "timeout_seconds": 15,
+      "label": {
+        "en": "Correct the position of a shade",
+        "fr": "Corriger la position d’un volet",
+        "de": "Position eines Antriebs korrigieren",
+        "es": "Corregir la posición de una persiana"
+      },
+      "description": {
+        "en": "Tells the controller where the shade really is, without moving it: after a remote it did not hear, or a power cut.",
+        "fr": "Indique au contrôleur où se trouve vraiment le volet, sans le bouger : après une télécommande qu’il n’a pas entendue, ou une coupure de courant.",
+        "de": "Teilt dem Controller mit, wo der Antrieb wirklich steht, ohne ihn zu bewegen: nach einer nicht gehörten Fernbedienung oder einem Stromausfall.",
+        "es": "Indica al controlador dónde está realmente la persiana, sin moverla: tras un mando que no oyó o un corte de luz."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "Shade",
+            "fr": "Volet",
+            "de": "Antrieb",
+            "es": "Persiana"
+          }
+        },
+        {
+          "key": "position",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "max": 100,
+          "label": {
+            "en": "Position (% open)",
+            "fr": "Position (% d’ouverture)",
+            "de": "Position (% offen)",
+            "es": "Posición (% abierta)"
+          }
+        },
+        {
+          "key": "tilt",
+          "type": "number",
+          "required": false,
+          "min": 0,
+          "max": 100,
+          "label": {
+            "en": "Slats (% open)",
+            "fr": "Lames (% d’ouverture)",
+            "de": "Lamellen (% offen)",
+            "es": "Lamas (% abiertas)"
+          },
+          "description": {
+            "en": "Blinds with slats only. Empty: unchanged.",
+            "fr": "Stores à lames seulement. Vide : inchangé.",
+            "de": "Nur Jalousien mit Lamellen. Leer: unverändert.",
+            "es": "Solo estores con lamas. Vacío: sin cambios."
+          }
+        }
+      ]
+    }
+  ]
+}

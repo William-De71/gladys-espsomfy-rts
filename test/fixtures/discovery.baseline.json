@@ -1,0 +1,174 @@
+[
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-1",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-1:state",
+        "category": "shutter",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-1:position",
+        "category": "shutter",
+        "type": "position",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-2",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-2:state",
+        "category": "shutter",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-2:position",
+        "category": "shutter",
+        "type": "position",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-2:sun-flag",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-3",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-3:state",
+        "category": "shutter",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-3:position",
+        "category": "shutter",
+        "type": "position",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-3:tilt",
+        "category": "shutter",
+        "type": "position",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-4",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-4:state",
+        "category": "curtain",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-4:position",
+        "category": "curtain",
+        "type": "position",
+        "unit": "percent",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-5",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-5:state",
+        "category": "shutter",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:shade:a1b2c3-6",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:shade:a1b2c3-6:contact",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:group:a1b2c3-1",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:group:a1b2c3-1:state",
+        "category": "shutter",
+        "type": "state",
+        "unit": null,
+        "min": -1,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      }
+    ]
+  }
+]
