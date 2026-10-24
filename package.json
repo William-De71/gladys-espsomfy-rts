@@ -1,6 +1,6 @@
 {
   "name": "gladys-espsomfy-rts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "External Gladys Assistant integration for ESPSomfy RTS: Somfy RTS shades, awnings, curtains and gates driven by an ESP32 controller on the local network.",
   "homepage": "https://github.com/William-De71/gladys-espsomfy-rts",
