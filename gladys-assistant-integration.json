@@ -8,8 +8,8 @@
     "de": "Somfy-RTS-Rollläden, Markisen und Tore über einen ESPSomfy-RTS-Controller, lokal.",
     "es": "Persianas, toldos y portones Somfy RTS con un controlador ESPSomfy RTS, en la red local."
   },
-  "version": "0.1.1",
-  "docker_image": "ghcr.io/william-de71/gladys-espsomfy-rts:0.1.1",
+  "version": "0.2.0",
+  "docker_image": "ghcr.io/william-de71/gladys-espsomfy-rts:0.2.0",
   "gladys_version": ">=5.3.0",
   "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-espsomfy-rts/main/cover.jpg",
   "categories": ["lighting", "protocols"],
