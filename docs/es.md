@@ -10,7 +10,7 @@ Esta integración lleva sus motores **Somfy RTS** a Gladys gracias a un controla
 
 ## Requisitos
 
-- Gladys Assistant 5.1.0 o posterior.
+- Gladys Assistant 5.3.0 o posterior.
 - Un controlador ESPSomfy RTS con firmware 2.4 o posterior, conectado a **la misma red que Gladys** (Wi-Fi o Ethernet).
 - Sus persianas y grupos **creados y emparejados en la página web del controlador**: la integración no empareja motores, usa lo que conoce el controlador.
 - En la instalación, acepte la **detección de red** (SSDP), que permite a Gladys encontrar el controlador. La opción **SSDP broadcast** del controlador debe seguir activa (lo está por defecto); si no, escriba su dirección en la configuración.

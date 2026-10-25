@@ -117,7 +117,7 @@ test('READMEs: four languages, navigation, badges, cover, same structure, images
       text,
       /actions\/workflow\/status\/William-De71\/gladys-espsomfy-rts\/release\.yml/,
     );
-    assert.match(text, /Gladys-%E2%89%A5%205\.1\.0/);
+    assert.match(text, /Gladys-%E2%89%A5%205\.3\.0/);
     assert.match(text, /!\[[^\]]+\]\(cover\.jpg\)/, `${README[language]} shows the cover`);
     assert.ok(
       text.includes(`(docs/assets/widgets.${language}.png)`),

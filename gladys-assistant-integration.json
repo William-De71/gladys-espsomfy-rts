@@ -10,9 +10,21 @@
   },
   "version": "0.1.1",
   "docker_image": "ghcr.io/william-de71/gladys-espsomfy-rts:0.1.1",
-  "gladys_version": ">=5.1.0",
+  "gladys_version": ">=5.3.0",
   "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-espsomfy-rts/main/cover.jpg",
   "categories": ["lighting", "protocols"],
+  "keywords": [
+    "somfy",
+    "rts",
+    "volet roulant",
+    "roller shutter",
+    "store",
+    "awning",
+    "blind",
+    "433 mhz",
+    "esp32",
+    "portail"
+  ],
   "transports": ["local"],
   "network_discovery": [
     {

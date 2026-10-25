@@ -5,7 +5,7 @@
 [![Licence : Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-blue.svg)](LICENSE)
 [![Dernière version](https://img.shields.io/github/v/release/William-De71/gladys-espsomfy-rts?sort=semver)](https://github.com/William-De71/gladys-espsomfy-rts/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/William-De71/gladys-espsomfy-rts/release.yml?branch=main&label=CI)](https://github.com/William-De71/gladys-espsomfy-rts/actions/workflows/release.yml)
-[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.1.0-2f6fb5)](https://gladysassistant.com)
+[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.3.0-2f6fb5)](https://gladysassistant.com)
 
 ![ESPSomfy RTS pour Gladys Assistant](cover.jpg)
 
@@ -127,7 +127,7 @@ Exemples :
 
 ## Prérequis
 
-- Gladys Assistant **5.1.0 ou plus récent** (widgets de tableau de bord et déclencheurs et actions de scène des intégrations ; les instances plus anciennes ne peuvent pas installer l’intégration).
+- Gladys Assistant **5.3.0 ou plus récent** (mots-clés et pays du catalogue de Gladys 5.3, widgets de tableau de bord et déclencheurs et actions de scène des intégrations ; les instances plus anciennes ne peuvent pas installer l’intégration).
 - Un contrôleur ESPSomfy RTS, micrologiciel **2.4** ou plus récent (testé selon le protocole de la 2.4.7, la dernière version), sur le même réseau que Gladys, avec ses volets et groupes créés et appairés dans sa page web.
 
 ## Installation

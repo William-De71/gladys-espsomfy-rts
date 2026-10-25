@@ -10,7 +10,7 @@ Diese Integration bringt Ihre **Somfy-RTS**-Antriebe über einen **ESPSomfy-RTS*
 
 ## Voraussetzungen
 
-- Gladys Assistant 5.1.0 oder neuer.
+- Gladys Assistant 5.3.0 oder neuer.
 - Ein ESPSomfy-RTS-Controller mit Firmware 2.4 oder neuer, verbunden mit **demselben Netzwerk wie Gladys** (WLAN oder Ethernet).
 - Ihre Antriebe und Gruppen, **auf der Webseite des Controllers angelegt und gekoppelt**: Die Integration koppelt keine Antriebe, sie nutzt, was der Controller kennt.
 - Akzeptieren Sie bei der Installation die **Netzwerkerkennung** (SSDP), mit der Gladys den Controller findet. Die Option **SSDP broadcast** des Controllers muss aktiv bleiben (sie ist es standardmäßig); andernfalls geben Sie seine Adresse in der Konfiguration ein.

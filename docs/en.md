@@ -10,7 +10,7 @@ This integration brings your **Somfy RTS** motors into Gladys through an **ESPSo
 
 ## Requirements
 
-- Gladys Assistant 5.1.0 or later.
+- Gladys Assistant 5.3.0 or later.
 - An ESPSomfy RTS controller with firmware 2.4 or later, connected to the **same network as Gladys** (Wi-Fi or Ethernet).
 - Your shades and groups **created and paired in the web page of the controller**: the integration does not pair motors, it uses what the controller knows.
 - On the install screen, accept the **network discovery** (SSDP), which lets Gladys find the controller. The **SSDP broadcast** option of the controller must stay on (it is by default); otherwise, type its address in the configuration.
